@@ -1,0 +1,37 @@
+version: "1"
+packages:
+    # 生成代码使用的包名。默认值path
+  - name: "db"
+    # 存储生成的golang代码文件的输出目录
+    path: "./db/sqlc"
+    # SQL 查询目录或单个 SQL 文件的路径 - 来源query
+    queries: "./db/query/"
+    # SQL 迁移目录或单个 SQL 文件的路径 - 来源schema
+    schema: "./db/migration/"
+    # 数据库engine：postgresql、mysql
+    engine: "postgresql"
+    # 是否将 JSON 标签添加到生成的结构中。默认为false
+    emit_json_tags: true
+    # 生成与准备好的语句一起使用的代码。
+    # 目前，我们还不需要优化性能。因此，让我们将其设置为 false 以使其简单。
+    # 默认为false
+    emit_prepared_queries: false
+    # 是否为生成的包生成查询器接口。默认为false
+    emit_interface: false
+    # Sqlc 将尝试将表名单数化以用作模型结构名称。
+    # false: accounts -> Account; true: accounts -> Accounts.
+    emit_exact_table_names: false
+    # 空切片返回[],而不是nil
+    emit_empty_slices: true
+
+rename:
+    # id: "Id"
+    # name: "UserName"
+    # create_at: "CreateTime"
+
+# 覆写类型
+overrides:
+  # - go_type: "github.com/uniplaces/carbon.Time"
+    # db_type: "pg_catalog.timestamp"
+  # - column: "authors.create_at"
+    # go_type: "github.com/uniplaces/carbon.Time"

@@ -14,3 +14,11 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 .env
+
+# except for .gitkeep
+!.gitkeep
+
+# ignore all files in gitkeep folder [因为以下文件是sqlc生成的]
+db/sqlc/models.go
+db/sqlc/db.go
+db/sqlc/*.sql.go

@@ -8,7 +8,7 @@ mysql_database := "mysql://$(MYSQL_USER):$(MYSQL_PWD)@tcp($(DOMAIN):$(POSTGRES_P
 
 
 # 🔨 准备阶段
-.PHONY: env postgres mysql createdb dropdb
+.PHONY: env history postgres mysql createdb dropdb
 # print variable within .env
 env:
 	@echo $(postgres_database)
@@ -42,3 +42,13 @@ migratedown:
 # version 1
 migratedown1:
 	migrate -path db/migration -database $(postgres_database) -verbose down 1
+
+
+# 🔨 数据库查询 or mock
+.PHONY: sqlc docker-sqlc
+# 本机安装sqlc进行初始化 (因为sqlc用到了一个 linux 下的库，在 windows 上无法正常编译)
+sqlc:
+	sqlc generate
+# 使用 docker 镜像kjconroy/sqlc 来进行初始化
+docker-sqlc:
+	docker run --rm -v $(SQLC_YAML):/src -w /src kjconroy/sqlc generate

@@ -74,7 +74,7 @@ Enum Currency {
 ```
 
 
-## 第二节 · 环境配置
+## 第二节 · 环境配置 (数据库服务，建表，GUI)
 
 ### docker
 > [下载地址和hub镜像](https://hub.docker.com/editions/community/docker-ce-desktop-windows)

@@ -4,14 +4,20 @@
     "bigserial",
     "createdb",
     "dbdiagram",
+    "dbtx",
     "dropdb",
+    "execrows",
+    "gitkeep",
+    "gorm",
     "mingw",
     "postgres",
     "psql",
     "relaionship",
     "sqlc",
+    "sqlx",
     "sslmode",
     "timestamptz",
+    "uniplaces",
     "varchar"
   ]
 }
