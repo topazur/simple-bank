@@ -1,6 +1,9 @@
 {
   "cSpell.words": [
+    "GOPATH",
+    "GOPROXY",
     "PGDATA",
+    "abcdefghijklmnopqrstuvwxyz",
     "bigserial",
     "createdb",
     "dbdiagram",
@@ -13,9 +16,11 @@
     "postgres",
     "psql",
     "relaionship",
+    "simplebank",
     "sqlc",
     "sqlx",
     "sslmode",
+    "stretchr",
     "timestamptz",
     "uniplaces",
     "varchar"

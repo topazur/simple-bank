@@ -1,4 +1,4 @@
-include .env # 引入环境变量,通过$(key)读取属性值
+include app.env # 引入环境变量,通过$(key)读取属性值
 
 # 在定义时扩展(静态扩展),非动态
 postgres_database := "postgresql://$(POSTGRES_USER):$(POSTGRES_PWD)@$(DOMAIN):$(POSTGRES_PORT)/$(DATABASE_NAME)?sslmode=disable"
