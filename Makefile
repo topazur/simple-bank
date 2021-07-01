@@ -52,3 +52,21 @@ sqlc:
 # 使用 docker 镜像kjconroy/sqlc 来进行初始化
 docker-sqlc:
 	docker run --rm -v $(SQLC_YAML):/src -w /src kjconroy/sqlc generate
+
+# 🔨 Go Command
+.PHONY: test server
+get-air:
+	go get -u github.com/cosmtrek/air
+# 增加缺少的module，删除无用的module
+tidy:
+	go mod tidy
+# 运行当前包目录下的tests (v会显示详细信息,cover应该表示那些文件会被测试)
+test:
+	go test -v -cover ./...
+# 运行go project
+server:
+	go run main.go
+# 编译语言与脚本语言不同，需要每次修改代码以后都要重新编译后重启服务才行.
+# [topgoer博客](http://www.topgoer.com/gin%E6%A1%86%E6%9E%B6/%E5%85%B6%E4%BB%96/Air%E5%AE%9E%E6%97%B6%E5%8A%A0%E8%BD%BD.html)
+air:
+	air
