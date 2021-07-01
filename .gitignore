@@ -23,3 +23,5 @@ db/sqlc/models.go
 db/sqlc/db.go
 db/sqlc/*.sql.go
 db/sqlc/querier.go
+# github.com/golang/mock
+db/mock/store.go

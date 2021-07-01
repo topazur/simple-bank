@@ -45,16 +45,19 @@ migratedown1:
 
 
 # 🔨 数据库查询 or mock
-.PHONY: sqlc docker-sqlc
+.PHONY: sqlc docker-sqlc mock
 # 本机安装sqlc进行初始化 (因为sqlc用到了一个 linux 下的库，在 windows 上无法正常编译)
 sqlc:
 	sqlc generate
 # 使用 docker 镜像kjconroy/sqlc 来进行初始化
 docker-sqlc:
 	docker run --rm -v $(SQLC_YAML):/src -w /src kjconroy/sqlc generate
+# mockgen 指定store目录及interface名称；然后指定输出目录、package名称以参数形式插入
+mock:
+	mockgen -package mockdb -destination db/mock/store.go github.com/topaz-h/go-simple-bank/db/sqlc Store
 
 # 🔨 Go Command
-.PHONY: test server
+.PHONY: test server get-air air tidy
 get-air:
 	go get -u github.com/cosmtrek/air
 # 增加缺少的module，删除无用的module
