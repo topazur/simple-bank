@@ -22,3 +22,4 @@ app.env
 db/sqlc/models.go
 db/sqlc/db.go
 db/sqlc/*.sql.go
+db/sqlc/querier.go

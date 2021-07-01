@@ -11,13 +11,15 @@ import (
 // Server 结构体提供实现 HTTP API 服务器的方法.
 type Server struct {
 	// 它将允许我们在处理来自客户端的 API 请求时与数据库进行交互。
-	store *db.Store
+	// 结构体指针改为interface
+	store db.Store
 	// 该路由器将帮助我们将每个 API请求发送到正确的处理程序进行处理
 	router *gin.Engine
 }
 
 /// NewServer 创建一个新的 HTTP 服务器并设置路由.
-func NewServer(store *db.Store) (*Server, error) {
+// 结构体指针改为interface
+func NewServer(store db.Store) (*Server, error) {
 	server := &Server{
 		store: store,
 	}

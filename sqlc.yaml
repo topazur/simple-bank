@@ -16,8 +16,9 @@ packages:
     # 目前，我们还不需要优化性能。因此，让我们将其设置为 false 以使其简单。
     # 默认为false
     emit_prepared_queries: false
-    # 是否为生成的包生成查询器接口。默认为false
-    emit_interface: false
+    # 是否为生成的包生成查询器接口。默认为false -- 它包含生成的查询器接口,具有从数据库插入和查询数据的所有功能。
+    # 文件内声明了一个空白变量以确保 Queries 结构必须实现此 Querier interface 的所有功能。
+    emit_interface: true
     # Sqlc 将尝试将表名单数化以用作模型结构名称。
     # false: accounts -> Account; true: accounts -> Accounts.
     emit_exact_table_names: false
