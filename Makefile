@@ -30,16 +30,19 @@ dropdb:
 
 # 🔨 数据库迁移
 .PHONY: migrateup migrateup1 migratedown migratedown1
+# 创建迁移schema，指定后缀、目标、名称，最后迁移序号自动在上次结果累加
+migrate-create:
+	migrate create -ext sql -dir db/migration -seq <name>
 # 开始迁移（all version）
 migrateup:
 	migrate -path db/migration -database $(postgres_database) -verbose up
-# 仅迁移version 1的schema
+# 1：仅迁移 or 回滚 上次迁移
 migrateup1:
 	migrate -path db/migration -database $(postgres_database) -verbose up 1
 # 清空迁移
 migratedown:
 	migrate -path db/migration -database $(postgres_database) -verbose down
-# version 1
+# 1：仅迁移 or 回滚 上次迁移
 migratedown1:
 	migrate -path db/migration -database $(postgres_database) -verbose down 1
 

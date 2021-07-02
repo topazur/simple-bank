@@ -19,7 +19,9 @@ import (
 
 /// GetAccount api测试用例 `单个情况`
 func TestGetAccountAPI(t *testing.T) {
-	account := randomAccount(util.RandomOwner())
+	// 表关联即可
+	user, _ := randomUser(t)
+	account := randomAccount(user.Username)
 
 	// 传入 *testing.T 生成 *gomock.Controller
 	ctrl := gomock.NewController(t)
@@ -59,7 +61,8 @@ func TestGetAccountAPI(t *testing.T) {
 
 /// GetAccount api测试用例列表 `所有情况`
 func TestGetAccountAPIAll(t *testing.T) {
-	account := randomAccount(util.RandomOwner())
+	user, _ := randomUser(t)
+	account := randomAccount(user.Username)
 
 	testCases := []struct {
 		name          string
