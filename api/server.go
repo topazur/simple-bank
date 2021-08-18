@@ -2,6 +2,7 @@ package api
 
 import (
 	"fmt"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 	// 文件夹名与package名不同：需显示指定package名
@@ -31,6 +32,31 @@ func NewServer(store db.Store) (*Server, error) {
 	router.POST("/account", server.createAccount)
 	router.GET("/account/:id", server.getAccount)
 	router.GET("/accounts", server.listAccounts)
+	router.GET("/100", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusContinue, gin.H{
+			"code": 100,
+		})
+	})
+	router.GET("/200", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusOK, gin.H{
+			"code": 200,
+		})
+	})
+	router.GET("/300", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusMultipleChoices, gin.H{
+			"code": 300,
+		})
+	})
+	router.GET("/400", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusBadRequest, gin.H{
+			"code": 400,
+		})
+	})
+	router.GET("/500", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusInternalServerError, gin.H{
+			"code": 500,
+		})
+	})
 
 	server.router = router
 	return server, nil

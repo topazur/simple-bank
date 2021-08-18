@@ -41,11 +41,13 @@ $ go mod init [模块名,或者github路径]  # 初始化当前文件夹, 创建
 $ go mod download    # 下载依赖的module到本地cache（默认为$GOPATH/pkg/mod目录）
 $ go mod edit -fmt   # 编辑go.mod文件(选项有-json、-require和-exclude)
 $ go mod graph       # 以文本模式打印模块依赖图
-$ go mod tidy        # 增加缺少的module，删除无用的module
+$ go mod tidy        # 运行 go mod tidy 来自动检测安装依赖项: 增加缺少的module，删除无用的module
 $ go mod vendor      # 在根目录生成vendor目录,将依赖复制到vendor下
 $ go mod verify      # 校验依赖是否正确
 $ go mod why         # 查找依赖
+
 # 总结: 获取第三方依赖时(下载到GOPATH/pkg中)
+$ go get <url> # url不带协议名
 $ go get -u -v package # v显示下载详细信息,u将会升级到最新的次要版本或者修订版本(x.y.z, z是修订版本号， y是次要版本号)
 ```
 </code>

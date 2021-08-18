@@ -36,3 +36,5 @@ overrides:
     # db_type: "pg_catalog.timestamp"
   # - column: "authors.create_at"
     # go_type: "github.com/uniplaces/carbon.Time"
+
+# sqlc用到了一个 linux 下的库，在 windows 上无法正常编译。在 windows 上我们可以使用 docker 镜像kjconroy/sqlc。
