@@ -3,6 +3,8 @@ package util
 import (
 	"fmt"
 	"math/rand"
+	"os"
+	"path/filepath"
 	"strings"
 	"time"
 )
@@ -58,4 +60,14 @@ func RandomCurrency() string {
 // RandomEmail 生成随机电子邮件
 func RandomEmail() string {
 	return fmt.Sprintf("%s@email.com", RandomString(6))
+}
+
+// Mkdir 定义一个创建文件目录的方法
+func MkdirFolder(basePath string) string {
+	//	1.获取当前时间,并且格式化时间
+	folderName := time.Now().Format("2006/01/02")
+	folderPath := filepath.Join(basePath, folderName)
+	//使用mkdirall会创建多层级目录
+	os.MkdirAll(folderPath, os.ModePerm)
+	return folderPath
 }

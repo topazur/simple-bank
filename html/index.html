@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+  </head>
+  <body>
+    <div>this is {{ printf "%s" . }}</div>
+    <p>
+      <a href="/up">up</a>
+    </p>
+    <p>
+      <a href="/multiple">up2</a>
+    </p>
+
+    <!-- <form
+      action="/download"
+      method="post"
+      class="form"
+      enctype="multipart/form-data"
+      role="form"
+      target="iframe_display"
+    >
+      <div>
+        <input type="input" name="name" />
+      </div>
+      <div>
+        <input type="submit" value="download" />
+      </div>
+    </form> -->
+    <ul>
+      <li>
+        <a href="/downPng">png: a标签 </a>
+      </li>
+      <li id="windowOpen1">png: window.open(api)</li>
+
+      <li>
+        <a href="/downZip">zip: a标签 </a>
+      </li>
+      <li id="windowOpen2">zip: window.open(api)</li>
+    </ul>
+
+    <script>
+      function download(name) {
+        console.log("window");
+        //不支持plus
+        window.open("/" + name);
+      }
+      windowOpen1.onclick = function () {
+        download("downPng");
+      };
+      windowOpen2.onclick = function () {
+        download("downZip");
+      };
+    </script>
+  </body>
+</html>

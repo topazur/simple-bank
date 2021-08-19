@@ -27,6 +27,20 @@ func NewServer(store db.Store) (*Server, error) {
 	// 默认使用了2个中间件Logger(), Recovery()
 	router := gin.Default()
 
+	router.GET("/template", server.htmlTemplate)
+
+	// https://zhuanlan.zhihu.com/p/151818857
+	router.LoadHTMLGlob("html/*")
+	router.GET("/home", func(c *gin.Context) {
+		c.HTML(200, "index.html", "home")
+	})
+	router.GET("/up", func(c *gin.Context) {
+		c.HTML(200, "up.html", "up")
+	})
+	router.GET("/multiple", func(c *gin.Context) {
+		c.HTML(200, "multiple.html", "multiple")
+	})
+
 	router.POST("/user", server.createUser)
 
 	router.POST("/account", server.createAccount)
@@ -57,6 +71,12 @@ func NewServer(store db.Store) (*Server, error) {
 			"code": 500,
 		})
 	})
+
+	router.POST("/uploadfile", server.uploadFile)
+	router.POST("/upload-multiple", server.uploadFiles)
+	// router.POST("/download", server.download)
+	router.GET("/downPng", server.downPng)
+	router.GET("/downZip", server.downZip)
 
 	server.router = router
 	return server, nil

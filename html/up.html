@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Up</title>
+    <style>
+      .form {
+        margin-top: 20px;
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+    <div>this is {{ printf "%s" . }}</div>
+
+    <!-- 空iframe，用于协助处理form提交后不进行页面跳转的问题 -->
+    <!-- form的target与iframe的name相同 -->
+    <iframe
+      id="iframeDisplay"
+      name="iframe_display"
+      style="display: none"
+    ></iframe>
+
+    <form
+      action="/uploadfile"
+      method="post"
+      class="form"
+      enctype="multipart/form-data"
+      role="form"
+      target="iframe_display"
+    >
+      <div>用户名:<input type="text" name="name" /></div>
+      <div>
+        <input type="file" name="file" />
+      </div>
+      <div>
+        <input type="submit" value="提交" />
+      </div>
+    </form>
+
+  </body>
+</html>
